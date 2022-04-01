@@ -1,0 +1,63 @@
+import math
+import random
+
+
+shiftValue = random.randint(1,10)
+a = 3
+def randomConv(a):
+  rand = random.randint(1,3)
+  if rand == 1:
+    return hex(a)
+  elif rand == 2:
+    return bin(a)
+  else:
+    return oct(a)
+
+message = 'I can make an orange rhyme with banana: bornana'
+
+def split(word):
+  return list(word)
+message = split(message)
+
+
+for i in range(len(message)):
+  if ord(message[i])<=122 and ord(message[i])>=97:
+    
+    message[i] = ord(message[i]) - 97
+   
+    if (a * (message[i]) + shiftValue) > 25:
+      message[i] = ((a * (message[i]) + shiftValue) %26 )
+      
+    else:
+      message[i] = (a * (message[i]) + shiftValue)
+      
+    message[i] = randomConv((message[i]) + 97)
+  elif ord(message[i])<=90 and ord(message[i])>=65:
+    
+    message[i] = ord(message[i]) - 65
+    if (a*(message[i]) + shiftValue) > 25:
+      message[i] = ((a*(message[i]) + shiftValue)%26)
+    else:
+      message[i] = (a*(message[i]) + shiftValue)
+    message[i] = randomConv((message[i]) + 65)
+  elif ord(message[i])<=57 and ord(message[i])>=48:
+    
+      message[i] = ord(message[i]) - 48
+      if (a*(message[i]) + shiftValue) > 9:
+        message[i] = ((a*(message[i]) + shiftValue)%10)
+        
+      else:
+        message[i] = (a*(message[i]) + shiftValue)
+      message[i] = randomConv((message[i]) + 48)
+        
+  elif ord(message[i])<=47 and ord(message[i])>=33:
+    
+      message[i] = ord(message[i]) - 33
+      if (a*(message[i]) + shiftValue) > 14:
+        message[i] = ((a*(message[i]) + shiftValue)%15)
+        
+      else:
+        message[i] = (a*(message[i]) + shiftValue)
+        
+      message[i] = randomConv((message[i]) + 33)
+print(message)
